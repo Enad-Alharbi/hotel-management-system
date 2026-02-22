@@ -6,8 +6,8 @@ const config = require('./env');
 const connectDB = async () => {
   try {
     await mongoose.connect(config.mongoUri, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
+      serverSelectionTimeoutMS: 5000,
+      socketTimeoutMS: 45000,
     });
     console.log('MongoDB connected successfully');
     return mongoose.connection;
